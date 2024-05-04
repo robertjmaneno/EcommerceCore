@@ -1,12 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Ecommerce.Data;
+using Ecommerce.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Ecommerce.Controllers
 {
     public class CategoryController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _db;
+        public CategoryController(ApplicationDbContext db)
         {
-            return View();
+            _db = db;
+        }
+        public IActionResult Index()
+        {    List<Category> ObjectCategoriesList = _db.Categories.ToList();
+            return View(ObjectCategoriesList);
         }
     }
 }

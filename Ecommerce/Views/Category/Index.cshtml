@@ -1,0 +1,25 @@
+﻿@model List<Category>
+
+<div>
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <h2>Category List</h2>
+        <a href="@Url.Action("Create", "Category")" class="btn btn-primary">Create Category</a>
+    </div>
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th>Category Name</th>
+                <th>Display Order</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var objectList in Model)
+            {
+                <tr>
+                    <td>@objectList.Name</td>
+                    <td>@objectList.DisplayOrder</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
