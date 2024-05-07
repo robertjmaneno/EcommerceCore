@@ -1,7 +1,6 @@
 ﻿using Ecommerce.Data;
 using Ecommerce.Models;
 using Microsoft.AspNetCore.Mvc;
-
 namespace Ecommerce.Controllers
 {
     public class CategoryController : Controller
@@ -18,6 +17,17 @@ namespace Ecommerce.Controllers
 
         public IActionResult Create() { 
             return View();
+        }
+
+
+        [HttpPost]
+        public IActionResult Create(Category category) 
+        {  
+            _db.Categories.Add(category);
+            _db.SaveChanges();
+
+
+            return RedirectToAction("Index", "Category"); 
         }
     }
 }
