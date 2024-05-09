@@ -9,7 +9,7 @@ namespace Ecommerce.Models
         public int Id { get; set; }
 
         [Required]
-        [DisplayName("Display Name")]
+        [DisplayName("Category Name")]
         [MaxLength(20, ErrorMessage ="The maximum length must be less than 20")]
         public required string Name { get; set; }
         [DisplayName("Display Order")]
