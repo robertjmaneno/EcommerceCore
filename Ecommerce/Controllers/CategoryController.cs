@@ -1,4 +1,5 @@
-﻿using Ecommerce.Data;
+﻿
+using Ecommerce.DataAccess.Data;
 using Ecommerce.Models;
 using Microsoft.AspNetCore.Mvc;
 namespace Ecommerce.Controllers
@@ -23,6 +24,7 @@ namespace Ecommerce.Controllers
             if(ModelState.IsValid) {
                 _db.Categories.Add(category);
                 _db.SaveChanges();
+                TempData["success"] = "Category created successfully";
                 return RedirectToAction("Index", "Category");
             }
            
@@ -50,6 +52,7 @@ namespace Ecommerce.Controllers
             if (ModelState.IsValid)
             {
                 _db.Categories.Update(category);
+                TempData["success"] = "Category updated successfully";
                 _db.SaveChanges();
                 return RedirectToAction("Index", "Category");
             }
@@ -87,6 +90,7 @@ namespace Ecommerce.Controllers
             
             _db.Categories.Remove(category);
             _db.SaveChanges();
+            TempData["success"] = "Category deleted successfully";
             return RedirectToAction("Index", "Category");
 
         }
